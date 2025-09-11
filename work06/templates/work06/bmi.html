@@ -1,0 +1,30 @@
+<!-- work06/templates/work06/bmi.html -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>BMI計算ツール</title>
+</head>
+
+<body>
+    <h1>BMI計算ツール</h1>
+
+    <!-- フォーム開始 -->
+    <form method="post">
+        {% csrf_token %} <!-- セキュリティ用トークン、必須です！ -->
+
+        {{ form.as_p }} <!-- フォームの中身を<p>タグ付きで表示 -->
+
+        <button type="submit">計算する</button>
+    </form>
+
+    <!-- 計算結果があれば表示 -->
+    {% if result %}
+    <p><strong>{{ result }}</strong></p>
+    {% endif %}
+
+    <p><a href="{% url 'top' %}">トップに戻る</a></p>
+</body>
+
+</html>
