@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'todo_app/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'todo_app/create.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Sawarabi+Mincho&family=Raleway&family=Noto+Sans+JP&display=swap"
+        rel="stylesheet">
+    <title>create</title>
+</head>
+
+<body>
+    <h1 class="page-title">Task add</h1>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mit-time">
+            <label for="due_time" class="labe">時刻:</label>
+            <input type="time" id="due_time" name="due_time" required><br><br>
+        </div>
+        <div class="mit">
+            <label for="title" class="labe">タイトル:</label>
+            <input type="text" id="title" name="title" placeholder="タスク名" required><br><br>
+        </div>
+        <div class="mit-na">
+            <label for="description" class="labe">内容:</label>
+            <textarea id="description" name="description" placeholder="詳細（任意）"></textarea><br><br>
+        </div>
+
+        <button type="submit" class="Botan">create</button>
+    </form>
+    <a href="http://127.0.0.1:8000/todo_app/todo/" class="Botan-back">back</a>
+</body>
+
+</html>

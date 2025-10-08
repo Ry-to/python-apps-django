@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+body {
+    background-color: whitesmoke;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 37px;
+}
+
+textarea {
+    padding: 10px;
+    /* 内側の余白 */
+    border: 1px solid black;
+    /* 枠線 */
+    border-radius: 8px;
+    /* 角丸 */
+    font-size: 16px;
+    /* 文字サイズ */
+    font-family: inherit;
+    /* 親と同じフォント */
+    resize: vertical;
+    /* 高さだけ変更可能 */
+    box-sizing: border-box;
+    background-color: white;
+
+}
+
+input {
+    padding: 10px;
+    /* 内側の余白 */
+    border: 1px solid black;
+    /* 枠線 */
+    border-radius: 8px;
+    /* 角丸 */
+    font-size: 16px;
+    background-color: white;
+
+}
+
+.mit {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    /* ラベル→入力欄を縦に */
+    margin-bottom: 15px;
+    /* 下の余白 */
+}
+
+.mit-time {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    /* ラベル→入力欄を縦に */
+    margin-bottom: 15px;
+    /* 下の余白 */
+}
+
+.mit-na {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Botan {
+    font-size: 20px;
+    /* 文字サイズ */
+    font-weight: bold;
+    /* 太字 */
+    background-color: wheat;
+    /* 背景色 */
+    color: black;
+    /* 文字色 */
+    padding: 10px 20px;
+    /* 内側の余白 */
+    border: 2px solid black;
+    /* 枠線 */
+    border-radius: 20px;
+    /* 角を丸くする */
+    display: inline-block;
+}
+
+.Botan-back {
+    font-size: 20px;
+    /* 文字サイズ */
+    font-weight: bold;
+    /* 太字 */
+    background-color: wheat;
+    /* 背景色 */
+    color: black;
+    /* 文字色 */
+    padding: 10px 20px;
+    /* 内側の余白 */
+    border: 2px solid black;
+    /* 枠線 */
+    border-radius: 20px;
+    /* 角を丸くする */
+    display: inline-block;
+}
+
+.labe {
+    font-size: 24px;
+}

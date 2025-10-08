@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hi and Low</title>
+</head>
+
+<body>
+    <h1>Hi and Low</h1>
+    <p>
+        ルール：<br>
+        コンピュータが1から10までの数字をランダムに選びます<br>
+        あなたはその数が5よりHIかLOWかを当ててください<br>
+        5が選ばれた場合は引き分けです<br>
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="hand" value="Hi">
+            Hi
+        </button>
+        <button type="submit" name="hand" value="Low">
+            Low
+        </button>
+    </form>
+
+    {% if result %}
+    <p><strong>{{ result }}</strong></p>
+    {% endif %}
+
+    <p><a href="{% url 'top' %}">トップに戻る</a></p>
+</body>
+
+</html>

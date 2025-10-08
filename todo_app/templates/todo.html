@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'todo_app/todo.css' %}">
+    <link rel="stylesheet" href="{% static 'todo_app/reset.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Sawarabi+Mincho&family=Raleway&family=Noto+Sans+JP&display=swap"
+        rel="stylesheet">
+    <title>ToDolist</title>
+</head>
+
+<body>
+    <header>
+        <ul class="tab">
+            <li><a href="http://127.0.0.1:8000/todo_app/create/">Task add</a></li>
+            <li>Edit</li>
+            <li>Memo</li>
+        </ul>
+    </header>
+    <main>
+        <img src="{% static 'todo_app/images/mainvisual.jpg' %}" class="mainvisual">
+        <h1>Task List</h1>
+    </main>
+    <div>
+        <P>ToDo Listの使い方</P>
+        <p>初めての人はここをタップ</p>
+    </div>
+    <section class="victory-board">
+        <h2>Victory Board🏆</h2>
+        <div class="box">
+            <ul>
+                <li>Daily Wins</li>
+                <li>Weekly Wins</li>
+                <li>Winning StreakDays</li>
+            </ul>
+            <p class="overdue-tasks">⚠️Overdue Tasks⚠️</p>
+        </div>
+    </section>
+    <p class="Today">Today's Tasks!</p>
+    <ul>
+        {% for task in tasks %}
+        <li class="Tody-box">
+            <strong>{{ task.due_time }}</strong> - {{ task.title }}
+            {% if task.description %} : {{ task.description }}{% endif %}
+            <!-- 削除ボタン -->
+            <form action="{% url 'delete_task' task.id %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="mit">削除</button>
+            </form>
+        </li>
+        {% empty %}
+        <li>No tasks for today!</li>
+        {% endfor %}
+    </ul>
+    <p class="done">Task done yet?</p>
+    <ul>
+        {% for task in tasks %}
+        <li class="done-box">
+            <strong>{{ task.due_time }}</strong> - {{ task.title }}
+            {% if task.description %} : {{ task.description }}{% endif %}
+
+            <!-- 完了フラグ表示 -->
+            {% if task.completed %}
+            ✅ Done
+            {% else %}
+            ❌ Not done
+            {% endif %}
+
+            <!-- yes ボタン（完了にする） -->
+            <form action="{% url 'toggle_task' task.id %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="mit">Yes</button>
+            </form>
+
+            <!-- no ボタン（未完了にする） -->
+            <form action="{% url 'toggle_task' task.id %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="mit">No</button>
+            </form>
+        </li>
+        {% empty %}
+        <li>No tasks for today!</li>
+        {% endfor %}
+    </ul>
+    <p class="com">Completed Tasks</p>
+    <p class="tom">Tomorrow's Tasks</p>
+</body>
+
+</html>

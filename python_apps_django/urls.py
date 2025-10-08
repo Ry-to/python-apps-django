@@ -23,4 +23,6 @@ urlpatterns = [
     path("work05/", include("work05.urls")),
     path("work06/", include("work06.urls")),
     path("work07/", include("work07.urls")),
+    path("work08/", include("work08.urls")),
+    path("todo_app/", include("todo_app.urls")),
 ]

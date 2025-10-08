@@ -11,8 +11,9 @@
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">おみくじを引く</button>
+        <button type="submit">
+            おみくじを引く
+        </button>
     </form>
 
     {% if result %}

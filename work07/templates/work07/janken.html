@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ジャンケンゲーム</title>
+</head>
+
+<body>
+    <h1>ジャンケン</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="hand" value="グー">
+            ✊グー
+        </button>
+        <button type="submit" name="hand" value="チョキ">
+            ✌️チョキ
+        </button>
+        <button type="submit" name="hand" value="パー">
+            🖐️パー
+        </button>
+    </form>
+
+    {% if result %}
+    <p><strong>{{ result }}</strong></p>
+    {% endif %}
+
+    <p><a href="{% url 'top' %}">トップに戻る</a></p>
+</body>
+
+</html>

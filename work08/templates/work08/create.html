@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'work08/create.css' %}">
+    <title>メモ</title>
+</head>
+
+<body>
+    <div class="box">
+        <h1>メモ帳アプリ-作成</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="title">タイトル</label><br>
+            <input type="text" name="title" id="title" size="40"><br><br>
+            <label for="content">内容</label><br>
+            <textarea name="content" id="content" rows="6" cols="40"></textarea><br><br>
+            <button type="submit">作成</button>
+        </form>
+        <p class="Botan"><a href="http://127.0.0.1:8000/work08/top/">戻る</a></p>
+    </div>
+</body>
+
+</html>

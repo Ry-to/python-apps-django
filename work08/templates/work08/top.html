@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{% static 'work08/top.css' %}">
+    <title>メモアプリ</title>
+</head>
+
+<body>
+    <h2>メモアプリ</h2>
+
+    <!-- 作成ページへのリンク -->
+    <p class="Botan"><a href="{% url 'work08:create' %}">作成</a></p>
+
+    <!-- メモ一覧表示 -->
+    <p>メモ一覧表示</p>
+    {% if memos %}
+    <ul>
+        {% for memo in memos %}
+        <li>
+            <strong>{{ memo.title }}</strong><br>
+            {{ memo.content|linebreaksbr }}<br>
+            <small>{{ memo.created_at }}</small>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>メモはまだありません。</p>
+    {% endif %}
+</body>
+
+</html>
