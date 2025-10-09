@@ -6,4 +6,5 @@ app_name = "work08"  # これを必ず追加する
 urlpatterns = [
     path("top/", views.top, name="top"),
     path("create/", views.create, name="create"),
+    path("delete/<int:memo_id>/", views.delete, name="delete"),
 ]

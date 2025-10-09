@@ -16,19 +16,30 @@
 
     <!-- メモ一覧表示 -->
     <p>メモ一覧表示</p>
+
     {% if memos %}
     <ul>
         {% for memo in memos %}
         <li>
             <strong>{{ memo.title }}</strong><br>
             {{ memo.content|linebreaksbr }}<br>
-            <small>{{ memo.created_at }}</small>
+
+            <!-- 🔹削除ボタン -->
+            <form method="post" action="{% url 'work08:delete' memo.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="mit">削除</button>
+            </form>
         </li>
+
+        <!-- 🔸 区切り線（最後の要素には出さない） -->
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+
         {% endfor %}
     </ul>
     {% else %}
     <p>メモはまだありません。</p>
     {% endif %}
-</body>
 
 </html>
