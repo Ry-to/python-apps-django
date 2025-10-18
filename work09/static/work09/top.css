@@ -1,0 +1,86 @@
+@charset "utf-8";
+
+body {
+    background-color: white;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    /* 各項目の間の余白 */
+}
+
+label {
+    display: block;
+    /* ラベルをブロック表示にして改行 */
+    font-weight: bold;
+    /* 見出しを太字に */
+    margin-bottom: 5px;
+    /* ラベルと入力欄の間に少し余白 */
+}
+
+.input-box {
+    width: 300px;
+    /* 同じ幅で揃える */
+    padding: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.mit {
+    display: block;
+    /* 横いっぱいを使わないときはblockでもOK */
+    width: 100px;
+    /* 入力欄と同じ幅に合わせる */
+    padding: 8px 0;
+    font-size: 16px;
+    background-color: #007bff;
+    /* 青系ボタン */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    /* 入力欄との間に余白 */
+}
+
+.mit:hover {
+    background-color: #0056b3;
+    /* ホバー時に少し濃く */
+}
+
+.todo-list li {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 20px;
+    width: 600px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px 15px;
+    background-color: #f9f9f9;
+}
+
+.todo-list {
+    list-style: none;
+    /* ・を消す */
+    padding: 0;
+    /* ul の余白も消す */
+    margin: 0;
+}
+
+.todo-list strong {
+    margin-right: 20px;
+    /* タイトルと期限の間隔 */
+}
+
+.de {
+    width: 100px;
+    font-size: 16px;
+    background-color: crimson;
+    /* 青系ボタン */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    /* 入力欄との間に余白 */
+}

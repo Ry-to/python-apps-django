@@ -1,15 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todoアプリ</title>
+    <link rel="stylesheet" href="{% static 'work09/top.css' %}">
 </head>
 
 <body>
-    <h1>Todoアプリ</h1>
+    <h2>新しいタスクを追加</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">タイトル：</label>
+            <input type="text" name="title" id="title" class="input-box" required>
+        </div>
 
+        <div class="form-group">
+            <label for="deadline">期限日：</label>
+            <input type="datetime-local" name="deadline" id="deadline" class="input-box">
+        </div>
+
+        <div>
+            <button type="submit" class="mit">登録</button>
+        </div>
+    </form>
+
+    <h2>TODO一覧</h2>
+
+    <!-- メッセージ表示 -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- TODOがある場合は一覧表示 -->
+    {% if todos %}
+    <ul class="todo-list">
+        {% for todo in todos %}
+        <li>
+            <strong>{{ todo.title }}</strong>
+            {% if todo.deadline %}
+            - {{ todo.deadline|date:"Y/m/d H:i" }}
+            {% endif %}
+
+            <!-- 削除ボタン用のフォームは li 内に置く -->
+            <form method="post" action="{% url 'work09:delete' todo.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="de">削除</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>まだTODOはありません。</p>
+    {% endif %}
 </body>
 
 </html>
