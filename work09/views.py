@@ -40,3 +40,7 @@ def delete(request, todo_id):
     if request.method == "POST":  # POSTのときだけ削除
         todo.delete()
         return redirect("work09:top")
+
+
+def edit(request, todo_id):
+    todo = get_object_or_404(Todo, id=todo_id)

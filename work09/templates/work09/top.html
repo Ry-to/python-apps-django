@@ -54,6 +54,7 @@
                 {% csrf_token %}
                 <button type="submit" class="de">削除</button>
             </form>
+            <a href="{% url 'work09:edit'todo.id %}" class="editBtn">編集</a>
         </li>
         {% endfor %}
     </ul>
