@@ -1,0 +1,31 @@
+{% extends "todo/base/todo_base.html" %}
+{% block body %}
+<strong>
+    <p>{{ datetime_now }}</p>
+</strong>
+<br>
+<h2>今日のタスク</h2>
+<ul>
+    <ul>
+        {% for page in page_list %}
+        <li class="{% if page.is_done %}done-task{% else %}not-done-task{% endif %}">
+            {{ page.page_date }}:
+            <a href="{% url 'todo:page_detail' page.id %}">{{ page.titel }}</a>
+
+            <form method="POST" action="{% url 'todo:page_done' page.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">
+                    {% if page.is_done %}✅ 完了{% else %}⬜ 未完了{% endif %}
+                </button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'todo:page_create' %}">Todoリストを作成する</a>
+    <br>
+    <a href="{% url 'todo:page_list' %}">タスク一覧</a>
+    <form action="{% url 'accounts:logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">ログアウト</button>
+    </form>
+    {% endblock %}

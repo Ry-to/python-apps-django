@@ -1,0 +1,63 @@
+body {
+    background-color: #dcdcdc;
+
+}
+
+h1 a {
+    color: inherit;
+    /* 親要素の文字色に合わせる */
+    text-decoration: none;
+    /* 下線を消す */
+}
+
+.main1 {
+    display: flex;
+    /* Flexbox を有効にする */
+    flex-direction: column;
+    /* 縦方向に並べる */
+    justify-content: center;
+    /* 縦方向中央に揃える */
+    align-items: center;
+    /* 横方向も中央に揃えたい場合 */
+    background-color: #ffffff;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 0;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.form-group p {
+    margin: 2px 0 0 0;
+    /* 上2px、右0、下0、左0 に調整 */
+    font-size: 0.9em;
+    /* 小さめにしてもOK */
+    color: #555;
+    /* 任意で色を薄く */
+}
+
+.done-task {
+    background-color: #d4edda;
+    /* 緑っぽい背景 */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.not-done-task {
+    background-color: #f8d7da;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* ボタンはそのままでもOK */
+li button {
+    margin-left: 10px;
+}

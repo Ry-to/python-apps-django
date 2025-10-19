@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Todoリスト</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'todo/css/base.css' %}">
+</head>
+
+<body>
+    <div class="main1">
+        <h1><a href="{% url 'todo:index' %}">Todoリスト</a></h1>
+        {% block body %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>

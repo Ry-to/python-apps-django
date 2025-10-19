@@ -1,0 +1,21 @@
+{% extends "todo/base/todo_base.html" %}
+{% block body %}
+<h2>Todoリスト作成</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.titel.label_tag }}<br>
+        {{ form.titel }}
+    </div>
+    <div class="form-group">
+        {{ form.body.label_tag }}<br>
+        {{ form.body }}
+    </div>
+    <div class="form-group">
+        {{ form.page_date.label_tag }}<br>
+        <p>例) 2025-12-25</p>
+        {{ form.page_date }}
+    </div>
+    <button type="submit">作成</button>
+</form>
+{% endblock %}

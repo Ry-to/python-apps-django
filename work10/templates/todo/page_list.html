@@ -1,0 +1,14 @@
+{% extends "todo/base/todo_base.html" %}
+{% block body %}
+
+<ul>
+    {% for page in page_list %}
+    <li>
+        {{ page.page_date }}: <a href="{% url 'todo:page_detail' page.id %}">{{ page.titel }}</a>
+    </li>
+    {% empty %}
+    <div>タスクが一つもありません</div>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "todo/base/todo_base.html" %}
+{% block body %}
+<h2>{{ page.titel }}</h2>
+<div>{{ page.page_date}}</div>
+<div>{{ page.body | linebreaksbr }}</div>
+<form method="POST" action="{% url 'todo:page_delete' page.id %}">
+    {% csrf_token %}
+    <p>このタスクを消してもいいですか？</p>
+    <button type="submit">削除</button>
+</form>
+{% endblock %}

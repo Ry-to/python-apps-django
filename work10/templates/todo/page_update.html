@@ -1,0 +1,11 @@
+{% extends "todo/base/todo_base.html" %}
+{% block body %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>例) 2025-00-00</p>
+    <button type="submit">更新</button>
+</form>
+
+{% endblock %}
