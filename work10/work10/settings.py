@@ -127,3 +127,5 @@ LOGIN_REDIRECT_URL = "/todo/"
 LOGOUT_REDIRECT_URL = "/login/"
 
 STATICFILES_DIRS = [BASE_DIR / "static"]
+
+LOGIN_URL = "/login/"

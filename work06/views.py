@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import ReiwaForm, BmiForm, WarikanForm, TyokinForm, SisokuForm
+from openai import OpenAI
+import os
 
 
 def top(request):
@@ -63,8 +65,7 @@ def tyokin(request):
             result = f"{year}年後には {total} 円貯まります"
     else:
         form = TyokinForm()
-    return render(
-        request, "work06/tyokin.html", {"form": form, "result": result})
+    return render(request, "work06/tyokin.html", {"form": form, "result": result})
 
 
 def sisoku(request):
@@ -81,8 +82,20 @@ def sisoku(request):
             result = f"足し算: {addition}, 引き算: {subtraction}, 掛け算: {multiplication}, 割り算: {division}"
     else:
         form = SisokuForm()
-    return render(
-        request, "work06/sisoku.html", {"form": form, "result": result})
+    return render(request, "work06/sisoku.html", {"form": form, "result": result})
+
+
+def simple_qa_openai(request):
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    # query stringから質問を取得
+    question = request.GET.get("question", "おすすめのレシピは？")
+    prompt = "質問: {question}\n回答:".format(question=question)
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",  # または "gpt-4o" など
+        messages=[{"role": "user", "content": prompt}],
+    )
+    return HttpResponse(f"<pre>{response.choices[0].message.content}</pre>")
 
 
 # Create your views here.

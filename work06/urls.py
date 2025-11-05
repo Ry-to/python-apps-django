@@ -9,4 +9,5 @@ urlpatterns = [
     path("warikan/", views.warikan, name="warikan"),
     path("tyokin/", views.tyokin, name="tyokin"),
     path("sisoku/", views.sisoku, name="sisoku"),
+    path("simple_qa/", views.simple_qa_openai, name="simple_qa"),
 ]

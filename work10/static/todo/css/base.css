@@ -61,3 +61,12 @@ ul {
 li button {
     margin-left: 10px;
 }
+
+.logoutBtn {
+    background-color: #d4edda;
+    margin-top: 55px;
+    /* 緑っぽい背景 */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}

@@ -1,5 +1,6 @@
 {% extends "todo/base/todo_base.html" %}
 {% block body %}
+<p>こんにちは！ {{ user.username }} さん</p>
 <strong>
     <p>{{ datetime_now }}</p>
 </strong>
@@ -24,8 +25,8 @@
     <a href="{% url 'todo:page_create' %}">Todoリストを作成する</a>
     <br>
     <a href="{% url 'todo:page_list' %}">タスク一覧</a>
-    <form action="{% url 'accounts:logout' %}" method="post">
+    <form method="post" action="/logout/">
         {% csrf_token %}
-        <button type="submit">ログアウト</button>
+        <button type="submit" class="logoutBtn">ログアウト</button>
     </form>
     {% endblock %}

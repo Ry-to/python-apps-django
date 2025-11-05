@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from .forms import PageForm
 from .models import Page
@@ -6,7 +7,7 @@ from datetime import date, datetime
 from zoneinfo import ZoneInfo
 
 
-class IndexView(View):
+class IndexView(LoginRequiredMixin, View):
     def get(self, request):
         today = date.today()
         page_list = Page.objects.filter(page_date=today).order_by("-id")
@@ -21,7 +22,7 @@ class IndexView(View):
         )
 
 
-class PageCreateViwe(View):
+class PageCreateViwe(LoginRequiredMixin, View):
     def get(self, request):
         form = PageForm()
         return render(request, "todo/page_form.html", {"form": form})
@@ -34,19 +35,19 @@ class PageCreateViwe(View):
         return render(request, "todo/page_form.html", {"form": form})
 
 
-class PageListView(View):
+class PageListView(LoginRequiredMixin, View):
     def get(self, request):
         page_list = Page.objects.order_by("page_date")
         return render(request, "todo/page_list.html", {"page_list": page_list})
 
 
-class PageDetailView(View):
+class PageDetailView(LoginRequiredMixin, View):
     def get(self, request, id):
         page = get_object_or_404(Page, id=id)
         return render(request, "todo/page_detail.html", {"page": page})
 
 
-class PageUpdateView(View):
+class PageUpdateView(LoginRequiredMixin, View):
     def get(self, request, id):
         page = get_object_or_404(Page, id=id)
         form = PageForm(instance=page)
@@ -61,7 +62,7 @@ class PageUpdateView(View):
         return render(request, "todo/page_update.html", {"form": form, "page": page})
 
 
-class PageDeleteView(View):
+class PageDeleteView(LoginRequiredMixin, View):
     def get(self, request, id):
         page = get_object_or_404(Page, id=id)
         return render(request, "todo/page_confirm_delete.html", {"page": page})
@@ -72,10 +73,10 @@ class PageDeleteView(View):
         return redirect("todo:index")
 
 
-class PageDoneView(View):
+class PageDoneView(LoginRequiredMixin, View):
     def post(self, request, id):
         page = get_object_or_404(Page, id=id)
-        page.is_done = not page.is_done  # True ↔ False を切り替え
+        page.is_done = not page.is_done
         page.save()
         return redirect("todo:index")
 
