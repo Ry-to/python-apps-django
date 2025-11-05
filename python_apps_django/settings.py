@@ -154,3 +154,10 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# setup basicauth middleware
+if os.environ.get("ENABLE_BASIC_AUTH") or "false" == "true":
+    MIDDLEWARE.append("basicauth.middleware.BasicAuthMiddleware")
+    BASICAUTH_USERS = {
+        os.environ.get("BASIC_AUTH_USERNAME"): os.environ.get("BASIC_AUTH_PASSWORD"),
+    }
