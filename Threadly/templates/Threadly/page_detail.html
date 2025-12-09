@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threadly</title>
+</head>
+
+<body>
+    <h1>Threadly - 投稿詳細</h1>
+    <h2>{{ page.title }}</h2>
+    <p>{{ page.body }}</p>
+    <p>投稿者: {{ page.name }}</p>
+    <p>作成日時: {{ page.created_at }}</p>
+
+    <hr>
+
+    <h3>返信一覧</h3>
+    {% for reply in replies %}
+    <div style="margin-bottom: 10px; padding: 10px; border: 1px solid #ccc;">
+        <p>{{ reply.body }}</p>
+        <small>投稿者: {{ reply.name }} / {{ reply.created_at }}</small>
+    </div>
+    {% empty %}
+    <p>まだ返信はありません。</p>
+    {% endfor %}
+
+    <hr>
+
+    <h3>返信を書く</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ reply_form.as_p }}
+        <button type="submit">返信を投稿</button>
+    </form>
+
+    <br>
+    <a href="/Threadly/">戻る</a>
+</body>

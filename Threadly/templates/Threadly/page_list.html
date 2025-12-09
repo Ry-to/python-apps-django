@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threadly</title>
+</head>
+
+<body>
+    <h1>Threadly - 投稿一覧</h1>
+    {% for page in page_list %}
+    <strong>
+        <li>{{ page.page_date }}{{ page.title}}</li>
+    </strong>
+    <a href="{% url 'Threadly:page_detail' page.id %}">詳細を見る</a>
+    {% endfor %}
+    <a href="/Threadly/">戻る</a>
+</body>

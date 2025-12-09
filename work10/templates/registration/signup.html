@@ -1,0 +1,11 @@
+{% extends "todo/base/todo_base.html" %}
+
+<h2>サインアップ</h2>
+
+{% block body %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+</form>
+{% endblock body %}

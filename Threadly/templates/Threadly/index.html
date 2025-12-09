@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threadly</title>
+</head>
+
+<body>
+    <h1>Threadly</h1>
+    <p>現在時刻</p>
+    <p>{{ datetime_now }}</p>
+    <a href="{% url 'Threadly:page_create' %}">作成する</a><br>
+    <a href="{% url 'Threadly:page_list' %}">投稿一覧</a>
+</body>
+
+</html>
