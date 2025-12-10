@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, #ece9e6, #ffffff);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+/* タイトル */
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* タイトル下のライン */
+h1::after {
+    content: "";
+    width: 60px;
+    height: 4px;
+    background: #3498db;
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* ラベル */
+p {
+    font-size: 1.1rem;
+    margin: 6px 0;
+}
+
+/* 日時はカード風 */
+p:nth-of-type(2) {
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #000;
+}
+
+/* リンクボタン */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    transition: 0.3s ease;
+}
+
+/* ホバーアニメーション */
+a:hover {
+    background: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(52, 152, 219, 0.45);
+}
+
+/* リンクを縦並びにきれいに配置 */
+a+a {
+    margin-top: 10px;
+}

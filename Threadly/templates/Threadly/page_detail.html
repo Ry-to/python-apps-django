@@ -4,37 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Threadly/css/page_detail.css' %}">
     <title>Threadly</title>
 </head>
 
 <body>
     <h1>Threadly - 投稿詳細</h1>
-    <h2>{{ page.title }}</h2>
-    <p>{{ page.body }}</p>
-    <p>投稿者: {{ page.name }}</p>
-    <p>作成日時: {{ page.created_at }}</p>
 
-    <hr>
+    <div class="page-card">
+        <h2>{{ page.title }}</h2>
+        <p>{{ page.body }}</p>
 
-    <h3>返信一覧</h3>
-    {% for reply in replies %}
-    <div style="margin-bottom: 10px; padding: 10px; border: 1px solid #ccc;">
-        <p>{{ reply.body }}</p>
-        <small>投稿者: {{ reply.name }} / {{ reply.created_at }}</small>
+        <div class="page-meta">
+            投稿者: {{ page.name }} <br>
+            作成日時: {{ page.created_at }}
+        </div>
     </div>
-    {% empty %}
-    <p>まだ返信はありません。</p>
-    {% endfor %}
 
-    <hr>
+    <h3 class="reply-title">返信一覧</h3>
 
-    <h3>返信を書く</h3>
+    <div class="reply-list">
+        {% for reply in replies %}
+        <div class="reply-card">
+            <p>{{ reply.body }}</p>
+            <div class="reply-meta">投稿者: {{ reply.name }} / {{ reply.created_at }}</div>
+        </div>
+        {% empty %}
+        <p>まだ返信はありません。</p>
+        {% endfor %}
+    </div>
+
+    <h3 class="reply-form-title">返信を書く</h3>
+
     <form method="POST">
         {% csrf_token %}
         {{ reply_form.as_p }}
         <button type="submit">返信を投稿</button>
     </form>
 
-    <br>
-    <a href="/Threadly/">戻る</a>
+    <a href="/Threadly/" class="back-link">戻る</a>
 </body>
+
+</html>

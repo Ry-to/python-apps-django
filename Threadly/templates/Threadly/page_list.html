@@ -5,15 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Threadly</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Threadly/css/page_list.css' %}">
 </head>
 
 <body>
     <h1>Threadly - 投稿一覧</h1>
-    {% for page in page_list %}
-    <strong>
-        <li>{{ page.page_date }}{{ page.title}}</li>
-    </strong>
-    <a href="{% url 'Threadly:page_detail' page.id %}">詳細を見る</a>
-    {% endfor %}
-    <a href="/Threadly/">戻る</a>
+
+    <div class="page-list">
+        {% for page in page_list %}
+        <div class="page-item">
+
+            <div class="page-title">{{ page.title }}</div>
+            <div class="page-date">{{ page.page_date }}</div>
+
+            <a class="detail-link" href="{% url 'Threadly:page_detail' page.id %}">
+                詳細を見る
+            </a>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <a class="back-link" href="/Threadly/">戻る</a>
 </body>
