@@ -17,6 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
+from Threadly.views import bootstrap_admin  # ← ここ重要
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -27,4 +28,7 @@ urlpatterns = [
     path("todo_app/", include("todo_app.urls")),
     path("work09/", include("work09.urls")),
     path("Threadly/", include("Threadly.urls")),
+    path("bootstrap-admin/", bootstrap_admin),  # ← 一時的
+    path("", include("Threadly.urls")),
 ]
+
