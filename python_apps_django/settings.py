@@ -97,23 +97,26 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 if os.environ.get("RAILWAY_ENVIRONMENT"):
-    # ===== Railway（本番）=====
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.mysql",
-            "NAME": os.environ.get("MYSQLDATABASE"),
-            "USER": os.environ.get("MYSQLUSER"),
-            "PASSWORD": os.environ.get("MYSQLPASSWORD"),
-            "HOST": os.environ.get("MYSQLHOST"),
-            "PORT": os.environ.get("MYSQLPORT", "3306"),
+            "NAME": os.environ.get("DB_NAME"),
+            "USER": os.environ.get("DB_USER"),
+            "PASSWORD": os.environ.get("DB_PASSWORD"),
+            "HOST": os.environ.get("DB_HOST"),
+            "PORT": os.environ.get("DB_PORT", "3306"),
             "OPTIONS": {
                 "charset": "utf8mb4",
             },
         }
     }
 else:
-    # ===== ローカル =====
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
